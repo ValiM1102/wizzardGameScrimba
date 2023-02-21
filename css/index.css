@@ -9,7 +9,6 @@ html, body {
     color:#fff;
     font-family: 'MedievalSharp', cursive;
 }
-
 main {
     display:flex;
     flex-direction: column;
