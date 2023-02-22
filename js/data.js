@@ -4,7 +4,6 @@ export const avatarsData = [
         name:'Wizzard',
         avatarImg:'img/wizard.png',
         health: 60,
-        diceScore:[],
         diceCount: 3
     },
     {
@@ -12,7 +11,6 @@ export const avatarsData = [
         name:'Orc',
         avatarImg:'img/orc.png',
         health: 10,
-        diceScore:[],
         diceCount: 1
     }
 ]
