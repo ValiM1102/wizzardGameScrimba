@@ -3,12 +3,10 @@ import { Character } from './character.js'
 
 
 function attack(){
-   document.querySelector('#attack-button').addEventListener('click', function()
-   {
-      console.log('it works')
-   })
+   
+   render()
 }
-attack()
+document.querySelector('#attack-button').addEventListener('click',attack)
 
 const wizard = new Character(characterData.hero)
 const orc = new Character(characterData.monster)
