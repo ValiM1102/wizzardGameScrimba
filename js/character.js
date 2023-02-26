@@ -5,28 +5,29 @@ import {getDiceRollArray, getDicePlaceholderHtml} from './utils.js'
  
 export function Character(data) {
    Object.assign(this, data)
-    
-   if(document.querySelector('#attack-button').addEventListener('click', function(){})){
-    this.diceArray = this.getDiceHtml
-}else{
-    this.diceArray = getDicePlaceholderHtml(this.diceCount)
-}
-    
 
-   this.getDiceHtml = function (diceCount) {
-    
-    this.currentDiceScore = getDiceRollArray(this.diceCount).map(function(num){
-        `<div class="dice">${num}</div>`
-    })
- }
-    
-    console.log(this.getDiceHtml)
+   this.diceArray = getDicePlaceholderHtml(this.diceCount)
 
-   
+    this.getDiceHtml = function(){
+        this.currentDiceScore = getDiceRollArray(this.diceCount)
+        this.diceArray = this.currentDiceScore.map(function(num){
+            return `<div class="dice">${num}</div>`
+        }).join('')
+    }
 
+    this.takeDamage = function(damageArray){
+        this.totalDamage = damageArray.reduce(function(total, currentElement){
+            return total + currentElement
+        }) 
+        this.health -= this.totalDamage
+        if(this.health <= 0){
+            this.health = 0
+            this.isDead = true
+        }
+    } 
 
    this.getCharacterHtml = function(){
-      const {name, avatar, health, diceCount, diceArray } = this;
+      const {name, avatar, health,diceArray } = this;
 
       return `<div class="character-card">
               <h4 class="name"> ${name} </h4>
