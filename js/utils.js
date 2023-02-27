@@ -1,10 +1,10 @@
-export function getDiceRollArray (diceCount) {
-   return new Array(diceCount).fill(0).map(function () {
+export const getDiceRollArray = (diceCount) => {
+   return new Array(diceCount).fill(0).map(() => {
        return Math.floor(Math.random() * 6) + 1
    });
 }
-export function getDicePlaceholderHtml(diceCount){
-   return new Array(diceCount).fill('').map(function(){
+export const getDicePlaceholderHtml = (diceCount) => {
+   return new Array(diceCount).fill('').map(() => {
      return `<div class="placeholder-dice"></div>`
    }).join('')
 }

@@ -3,7 +3,7 @@ import { Character } from './character.js'
 
 
 
-function attack(){
+const attack = () => {
    wizard.getDiceHtml()
    orc.getDiceHtml()
    wizard.takeDamage(orc.currentDiceScore)
@@ -16,7 +16,7 @@ function attack(){
 }
 
 
-function endGame(){
+const endGame = () => {
    const endMessage = wizard.health === 0 && orc.health === 0 ? 'All the creatures are dead'
    : orc.health === 0 ? 'The Wizard is victorious' 
    : 'The Orc is victorious'

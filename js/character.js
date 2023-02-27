@@ -8,14 +8,14 @@ export function Character(data) {
 
    this.diceArray = getDicePlaceholderHtml(this.diceCount)
 
-    this.getDiceHtml = function(){
+    this.getDiceHtml = () => {
         this.currentDiceScore = getDiceRollArray(this.diceCount)
         this.diceArray = this.currentDiceScore.map(function(num){
             return `<div class="dice">${num}</div>`
         }).join('')
     }
 
-    this.takeDamage = function(damageArray){
+    this.takeDamage = (damageArray) => {
         this.totalDamage = damageArray.reduce(function(total, currentElement){
             return total + currentElement
         }) 
@@ -26,7 +26,7 @@ export function Character(data) {
         }
     } 
 
-   this.getCharacterHtml = function(){
+   this.getCharacterHtml = () => {
       const {name, avatar, health,diceArray } = this;
 
       return `<div class="character-card">
