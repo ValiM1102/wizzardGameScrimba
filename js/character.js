@@ -10,13 +10,13 @@ export function Character(data) {
 
     this.getDiceHtml = () => {
         this.currentDiceScore = getDiceRollArray(this.diceCount)
-        this.diceArray = this.currentDiceScore.map(function(num){
+        this.diceArray = this.currentDiceScore.map((num) => {
             return `<div class="dice">${num}</div>`
         }).join('')
     }
 
     this.takeDamage = (damageArray) => {
-        this.totalDamage = damageArray.reduce(function(total, currentElement){
+        this.totalDamage = damageArray.reduce((total, currentElement) => {
             return total + currentElement
         }) 
         this.health -= this.totalDamage
