@@ -1,15 +1,22 @@
 import {characterData} from '../js/data.js'
 import { Character } from './character.js'
 
+let monstersArray = ['orc', 'demon', 'goblin']
+
+const getNewMonster = () => {
+   const nextMonsterData = characterData[monstersArray.shift()]
+   return nextMonsterData ? new Character(nextMonsterData) : {}
+}
+
 
 
 const attack = () => {
    wizard.getDiceHtml()
-   orc.getDiceHtml()
-   wizard.takeDamage(orc.currentDiceScore)
-   orc.takeDamage(wizard.currentDiceScore)
+   monster.getDiceHtml()
+   wizard.takeDamage(monster.currentDiceScore)
+   monster.takeDamage(wizard.currentDiceScore)
    render()
-   if(wizard.isDead || orc.isDead){
+   if(wizard.isDead || monster.isDead){
       endGame()
       }
    
@@ -17,11 +24,11 @@ const attack = () => {
 
 
 const endGame = () => {
-   const endMessage = wizard.health === 0 && orc.health === 0 ? 'All the creatures are dead'
-   : orc.health === 0 ? 'The Wizard is victorious' 
-   : 'The Orc is victorious'
-   const endEmoji =  wizard.health === 0 && orc.health === 0 ? '☠️'
-   : orc.health === 0 ? '🔮' 
+   const endMessage = wizard.health === 0 && monster.health === 0 ? 'All the creatures are dead'
+   : monster.health === 0 ? 'The Wizard is victorious' 
+   : `The ${monster.name} is victorious`
+   const endEmoji =  wizard.health === 0 && monster.health === 0 ? '☠️'
+   : monster.health === 0 ? '🔮' 
    : '☠️'
    document.body.innerHTML = `
    <div class="end-game">
@@ -34,11 +41,12 @@ const endGame = () => {
 document.querySelector('#attack-button').addEventListener('click',attack)
 
 const wizard = new Character(characterData.hero)
-const orc = new Character(characterData.monster)
+let monster = getNewMonster()
+
 
 function render(){
    document.querySelector('#hero').innerHTML = wizard.getCharacterHtml()  
-   document.querySelector('#monster').innerHTML = orc.getCharacterHtml()
+   document.querySelector('#monster').innerHTML = monster.getCharacterHtml()
 }
 
 render()

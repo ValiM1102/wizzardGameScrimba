@@ -8,3 +8,4 @@ export const getDicePlaceholderHtml = (diceCount) => {
      return `<div class="placeholder-dice"></div>`
    }).join('')
 }
+export const getPercentage = (maxHealth, remainingHealth) => (100 * remainingHealth) / maxHealth
