@@ -1,7 +1,7 @@
-export const getDiceRollArray = (diceCount) => {
+ export const getDiceRollArray = (diceCount) => {
    return new Array(diceCount).fill(0).map(() => {
        return Math.floor(Math.random() * 6) + 1
-   });
+   })
 }
 export const getDicePlaceholderHtml = (diceCount) => {
    return new Array(diceCount).fill('').map(() => {

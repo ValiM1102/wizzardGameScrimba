@@ -8,11 +8,11 @@ export function Character(data) {
 
     this.maxHealth = this.health
 
-    this.diceArray = getDicePlaceholderHtml(this.diceCount)
+    this.diceHtml = getDicePlaceholderHtml(this.diceCount)
 
-    this.getDiceHtml = () => {
+    this.setDiceHtml = () => {
         this.currentDiceScore = getDiceRollArray(this.diceCount)
-        this.diceArray = this.currentDiceScore.map((num) => {
+        this.diceHtml = this.currentDiceScore.map((num) => {
             return `<div class="dice">${num}</div>`
         }).join('')
     }
@@ -42,7 +42,7 @@ export function Character(data) {
          
 
    this.getCharacterHtml = () => {
-      const {name, avatar, health,diceArray } = this;
+      const {name, avatar, health,diceHtml} = this;
 
     const healthBar = this.getHealthBarHtml()
 
@@ -52,11 +52,14 @@ export function Character(data) {
               <div class="health">health: <b> ${health} </b></div>
               ${healthBar}
               <div class="dice-container">    
-                  ${diceArray}
+                  ${diceHtml}
               </div>
           </div>`;
    }
 }
+
+
+
 
 
 
